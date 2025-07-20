@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cover Letter Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spinner {
+            border-top-color: #3498db;
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
+        
+        <div class="p-6 md:p-8 border-b border-slate-200">
+            <h1 class="text-3xl font-bold text-slate-800">AI Cover Letter Generator</h1>
+            <p class="text-slate-600 mt-2">Fill in the details below, and our AI will craft a professional cover letter for you, inspired by the best practices of industry experts.</p>
+        </div>
+
+        <div class="p-6 md:p-8">
+            <form id="cover-letter-form">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-4">Your Information</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="fullName" class="block text-sm font-medium text-slate-600">Full Name</label>
+                                <input type="text" id="fullName" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="e.g., Christopher Conboy">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-700 mb-4">Target Company & Role</h3>
+                        <div class="space-y-4">
+                             <div>
+                                <label for="companyName" class="block text-sm font-medium text-slate-600">Company Name</label>
+                                <input type="text" id="companyName" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="e.g., The Big Corp.">
+                            </div>
+                            <div>
+                                <label for="jobTitle" class="block text-sm font-medium text-slate-600">Job Title You're Applying For</label>
+                                <input type="text" id="jobTitle" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="e.g., Software Engineer (.NET/C#)">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label for="jobDescription" class="block text-sm font-medium text-slate-600">Job Description / Role Summary</label>
+                        <textarea id="jobDescription" rows="6" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="Paste the full job description here..."></textarea>
+                        <p class="mt-2 text-xs text-slate-500">Pasting the full job description allows the AI to tailor your letter to the specific role.</p>
+                    </div>
+                </div>
+
+                <hr class="my-8 border-slate-200">
+
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4">Your Experience & Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                             <div>
+                                <label for="yearsExperience" class="block text-sm font-medium text-slate-600">Total Years of Relevant Experience</label>
+                                <input type="text" id="yearsExperience" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="e.g., Over 30 years, Around 12 years">
+                            </div>
+                            <div>
+                                <label for="keySkills" class="block text-sm font-medium text-slate-600">Key Skills & Technologies (comma separated)</label>
+                                <input type="text" id="keySkills" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="e.g., C#, .NET, Database Management, Javascript">
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="recentProject" class="block text-sm font-medium text-slate-600">Describe a Key Project or Achievement</label>
+                                <textarea id="recentProject" rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="e.g., Led the development of an in-house ERP and warehouse system..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-8 border-slate-200">
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-700 mb-4">Customization</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label for="whyCompany" class="block text-sm font-medium text-slate-600">Why are you interested in this specific company?</label>
+                            <input type="text" id="whyCompany" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="e.g., Its innovative approach in the motoring industry">
+                        </div>
+                        <div>
+                            <label for="tone" class="block text-sm font-medium text-slate-600">Tone of Voice</label>
+                            <select id="tone" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500">
+                                <option>Professional</option>
+                                <option>Enthusiastic</option>
+                                <option>Formal</option>
+                                <option>Friendly but Professional</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <button type="submit" id="generate-btn" class="flex items-center justify-center bg-sky-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors duration-200">
+                        <span id="btn-text">Generate Cover Letter</span>
+                        <div id="spinner" class="spinner w-5 h-5 rounded-full border-2 border-t-2 border-white border-t-sky-500 ml-3 hidden"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="output-section" class="p-6 md:p-8 border-t border-slate-200 hidden">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-slate-800">Your Generated Cover Letter</h2>
+                <div class="flex items-center gap-x-3">
+                    <button id="copy-btn" class="bg-slate-200 text-slate-700 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 transition-colors duration-200">Copy Text</button>
+                    <button id="regenerate-btn" class="flex items-center justify-center bg-sky-600 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-sky-700 transition-colors duration-200">Regenerate</button>
+                </div>
+            </div>
+            <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <strong class="font-bold">Error:</strong>
+                <span class="block sm:inline" id="error-text"></span>
+            </div>
+            <pre id="cover-letter-output" class="bg-slate-50 p-4 rounded-md whitespace-pre-wrap text-slate-700 font-serif"></pre>
+        </div>
+
+    </div>
+
+    <script type="module">
+        // --- Gemini AI Integration ---
+        async function run(prompt) {
+            const apiKey = "";  
+            if (apiKey === "YOUR_API_KEY") {
+                throw new Error("API key is not set. Please replace 'YOUR_API_KEY' in the script.");
+            }
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+            const requestBody = {
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: { temperature: 0.8, topK: 1, topP: 1, maxOutputTokens: 2048 },
+            };
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody),
+                });
+                if (!response.ok) {
+                    const errorBody = await response.json();
+                    throw new Error(`API request failed with status ${response.status}: ${errorBody.error.message}`);
+                }
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error("AI Generation Error:", error);
+                throw error;
+            }
+        }
+
+        // --- UI Element References ---
+        const form = document.getElementById('cover-letter-form');
+        const generateBtn = document.getElementById('generate-btn');
+        const btnText = document.getElementById('btn-text');
+        const spinner = document.getElementById('spinner');
+        const outputSection = document.getElementById('output-section');
+        const outputPre = document.getElementById('cover-letter-output');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const copyBtn = document.getElementById('copy-btn');
+        const regenerateBtn = document.getElementById('regenerate-btn'); // New button reference
+
+        // --- NEW: Reusable Generation Function ---
+        const generateCoverLetter = async () => {
+            btnText.textContent = 'Generating...';
+            spinner.classList.remove('hidden');
+            generateBtn.disabled = true;
+            regenerateBtn.disabled = true;
+            errorMessage.classList.add('hidden');
+            
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                companyName: document.getElementById('companyName').value,
+                jobTitle: document.getElementById('jobTitle').value,
+                jobDescription: document.getElementById('jobDescription').value,
+                yearsExperience: document.getElementById('yearsExperience').value,
+                keySkills: document.getElementById('keySkills').value,
+                recentProject: document.getElementById('recentProject').value,
+                whyCompany: document.getElementById('whyCompany').value,
+                tone: document.getElementById('tone').value
+            };
+
+            const prompt = `
+                Act as an expert cover letter writer. Your task is to write a highly targeted and compelling cover letter by analyzing the provided job description and candidate details.
+                **1. Analyze the Job Description:**
+                First, meticulously analyze the following job description to identify the key requirements, skills (both technical and soft), and core responsibilities.
+                **Job Description:**
+                ---
+                ${formData.jobDescription}
+                ---
+                **2. Analyze the Candidate's Profile:**
+                Here is the profile of the candidate applying for the role.
+                **Candidate Details:**
+                - Name: ${formData.fullName}
+                - Years of Experience: ${formData.yearsExperience}
+                - Key Skills & Technologies: ${formData.keySkills}
+                - A Major Achievement/Project Example: ${formData.recentProject}
+                - Reason for Interest in this Specific Company: ${formData.whyCompany}
+                **3. Synthesize and Write the Cover Letter:**
+                Now, write the cover letter. It must:
+                - Be written in a ${formData.tone} tone.
+                - Directly address the needs and requirements found in the job description.
+                - Skillfully connect the candidate's skills and experiences to these requirements. Use the candidate's achievement as a concrete example to prove their capability.
+                - Show genuine enthusiasm based on the candidate's stated interest in the company.
+                - Do not use generic placeholders like "[Your Name]". Fill in all details directly.
+                - Structure the letter with a clear introduction, a body that highlights the match between the candidate and the role, and a strong concluding paragraph.
+                Start with "Dear Hiring Manager," and end with "Sincerely,\n${formData.fullName}".
+            `;
+            
+            try {
+                const generatedText = await run(prompt);
+                outputPre.textContent = generatedText;
+                outputSection.classList.remove('hidden');
+                if (!document.body.contains(regenerateBtn)) {
+                     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
+            } catch (err) {
+                let userFriendlyMessage = err.message;
+                if (err.message.includes('429') || err.message.includes('503')) {
+                    userFriendlyMessage = "The AI model is currently overloaded or unavailable. This is a temporary issue. Please wait a few moments and try again. 🤖";
+                } else if (err.message.includes('API key is not set')) {
+                    userFriendlyMessage = "Your API key is missing. Please edit the HTML file and add your key. 🔑";
+                } else if (err.message.includes('400')) {
+                     userFriendlyMessage = "There seems to be an issue with the request, possibly related to the input provided or a safety setting. Please review your input or try again later.";
+                }
+                errorText.textContent = userFriendlyMessage;
+                errorMessage.classList.remove('hidden');
+            } finally {
+                btnText.textContent = 'Generate Cover Letter';
+                spinner.classList.add('hidden');
+                generateBtn.disabled = false;
+                regenerateBtn.disabled = false;
+            }
+        };
+
+        // --- Event Listeners ---
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            generateCoverLetter();
+        });
+
+        regenerateBtn.addEventListener('click', () => {
+            // Give a little visual feedback on the output box before regenerating
+            outputPre.style.opacity = '0.5';
+            setTimeout(() => {
+                outputPre.style.opacity = '1';
+                generateCoverLetter();
+            }, 300);
+        });
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(outputPre.textContent).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => { copyBtn.textContent = 'Copy Text'; }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
