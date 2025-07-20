@@ -22,7 +22,7 @@ Follow these four simple steps to get the application running.
 
 ### 1\. Download the File
 
-Download the `cover-letter-generator.html` file to your computer.
+Download the `coverlettergenerator.html` file to your computer.
 
 ### 2\. Get Your API Key
 
